@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BankingDbModelStoreContainer" CdmEntityContainer="BankingDbEntities">
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="BankingDbModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetails">
+          <ScalarProperty Name="Reference_ID" ColumnName="Reference_ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+          <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+          <ScalarProperty Name="Email_Id" ColumnName="Email_Id" />
+          <ScalarProperty Name="Aadhar_Number" ColumnName="Aadhar_Number" />
+          <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+          <ScalarProperty Name="Address_Line1" ColumnName="Address_Line1" />
+          <ScalarProperty Name="Address_Line2" ColumnName="Address_Line2" />
+          <ScalarProperty Name="Lankmark" ColumnName="Lankmark" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="PermanentAddress_Line1" ColumnName="PermanentAddress_Line1" />
+          <ScalarProperty Name="PermanentAddress_Line2" ColumnName="PermanentAddress_Line2" />
+          <ScalarProperty Name="PermanentLankmark" ColumnName="PermanentLankmark" />
+          <ScalarProperty Name="PermanentState" ColumnName="PermanentState" />
+          <ScalarProperty Name="PermanentCity" ColumnName="PermanentCity" />
+          <ScalarProperty Name="PermanentPincode" ColumnName="PermanentPincode" />
+          <ScalarProperty Name="Occupation_type" ColumnName="Occupation_type" />
+          <ScalarProperty Name="Source_of_Income" ColumnName="Source_of_Income" />
+          <ScalarProperty Name="Gross_Annual_Income" ColumnName="Gross_Annual_Income" />
+          <ScalarProperty Name="Debit_Card" ColumnName="Debit_Card" />
+          <ScalarProperty Name="Net_banking" ColumnName="Net_banking" />
+          <ScalarProperty Name="Account_type" ColumnName="Account_type" />
+          <ScalarProperty Name="Approval_Status" ColumnName="Approval_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersAccounts">
+      <EntityTypeMapping TypeName="BankingDbModel.UsersAccount">
+        <MappingFragment StoreEntitySet="UsersAccount">
+          <ScalarProperty Name="Otp" ColumnName="Otp" />
+          <ScalarProperty Name="Reference_Id" ColumnName="Reference_Id" />
+          <ScalarProperty Name="Logout_Time" ColumnName="Logout_Time" />
+          <ScalarProperty Name="Login_Status" ColumnName="Login_Status" />
+          <ScalarProperty Name="Register_Internet_Banking" ColumnName="Register_Internet_Banking" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Transaction_Password" ColumnName="Transaction_Password" />
+          <ScalarProperty Name="Login_Password" ColumnName="Login_Password" />
+          <ScalarProperty Name="Customername" ColumnName="Customername" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="Account_Number" ColumnName="Account_Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

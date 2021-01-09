@@ -1,0 +1,24 @@
+Model---
+
+		i)	userdetails.cs
+		ii)	usersaccount.cs
+		iii)	transaction.cs
+		iv)	beneficiary.cs
+		v)	accountlocked.cs
+		vi)	admin.cs
+
+Controller--
+
+		i)	userdetails [get,put,delete-->admin][post->createacct,defaultstaus:"no",put-->edituserdetail]
+		ii)	usersaccount [put and get/id-->setpswd/transpswd,balance,loginstatus,logouttime,otp,registernetbank]
+		iii)	transaction [post-->everyfield,get/id-->accountsummary[top10],accountstatement[based_ondate]
+		iv)	beneficiary[post-->everyfield,get-->tosendtotransaction]
+		v)	accountlocked[post-->everyfield,get/id-->logincheck]
+		vi)	admin[post-->evryfield,get/id-->sendotp/mail]
+
+*Note make required change in 
+		i)	routetemplate
+		ii)	remove virtual
+		iii)	Add Formatter in Global.asax
+		iv)	CORS installation and config in webapiconfig and in controllers
+

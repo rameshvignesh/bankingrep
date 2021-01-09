@@ -1,0 +1,54 @@
+src---
+	app---
+
+		user:
+
+		i)	homecomponent -->  -login[redirectto(login)],netbanking_register[redirectto(register)],open_account[redirectto(openaccount)]
+		ii)	openaccountcomponet -->referenceid[redirectto(statuspage)],email(custid,pswd,acountnum)
+		iii)	registercomponent -->redirectto(login)
+		iv)	logincomponent --> netbanking_register[redirectto(register)],forgot_userid[redirectto(forgotuserid)],forgot_pswd[redirectto(forgotuserpswd)]
+		v)	forgotUsercomponent -->checkotp and [proceed and back-->redirect(login)]
+		vi)	forgotPasswordcomponent -->checkotp and [proceed-->redirectto(setnewpswd) and back-->redirect(login)]
+		v)	SetPasswordcomponent --> submit[submit-->redirectto(login)]
+		vi)	AccountLocked -->click[redirectto(forgot_pswd)]
+		vii)	Dashboardcomponent --> accountdetails,accountsummary,fundtransfer[redirectto(fundtransferhome)],accountstatement,changeUserIdpswd
+		viii)	AccountDetailscomponent -->backtodashboard[redirectto(dashboard)]
+		ix)	AccountSummarycomponent -->backtodashboard[redirectto(dashboard)]
+		x)	AccountStatementcomponent -->backtodashboard[redirectto(dashboard)]
+		xi)	ChangePasswordcomponent -->submit[redirectto(login)]
+		xii)	Fundtransferhomecomponent --> addpayee[redirectto(Addpayee),fundtransfer[redirectto(Fundtransfer)]
+		xiii)	Addpayeecomponent --> save[redirectto(fundtransferhome)]
+		xiv)	Fundtransfercomponent --> IMPS[redirectto(IMPS)],Neft[redirectto(Neft)],RTGS[redirectto(RTGS)]
+		xv)	IMPScomponent -->save[tempdata],Reset[resetform()],save[constantdata],continue[redirectto(transfersuccessful)],addnew[redirectto(addpayee)]
+		xvi)	Neftcomponent -->save[tempdata],Reset[resetform()],save[constantdata],continue[redirectto(transfersuccessful)],addnew[redirectto(addpayee)]
+		xvii)	RTGScomponent -->save[tempdata],Reset[resetform()],save[constantdata],continue[redirectto(transfersuccessful)],addnew[redirectto(addpayee)]
+		xviii)	Transfersuccesscomponent -->popup
+		xix)	SessionExpiredpage -->logoutsession[click(redirectto(login))]
+
+		Admin:
+	
+		i)	AdminLogin/Login(role) --> submit[redirectto(approve)]
+		ii)	ApproveAccountcomponent --> click(approve),logout[redirectto(login/adminlogin)]
+
+	model[Interface]---
+
+		i)userdetails.ts
+		ii)usersaccount.ts
+		iii)transaction.ts
+		iv)beneficiary.ts
+		v)accountlocked.ts
+		vi)admin.ts
+
+	services---
+
+		i)userdetails
+		ii)usersaccount
+		iii)transaction
+		iv)beneficiary
+		v)accountlocked
+		vi)admin
+
+*Note we are using custId as userId(Username)
+		
+
+

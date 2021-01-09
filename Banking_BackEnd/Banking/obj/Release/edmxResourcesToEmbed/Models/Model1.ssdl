@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BankingDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="UserDetails">
+    <Key>
+      <PropertyRef Name="Reference_ID" />
+    </Key>
+    <Property Name="Reference_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="First_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Middle_Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="Last_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Father_Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Mobile_Number" Type="bigint" Nullable="false" />
+    <Property Name="Email_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Aadhar_Number" Type="bigint" Nullable="false" />
+    <Property Name="Date_of_Birth" Type="date" Nullable="false" />
+    <Property Name="Address_Line1" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Address_Line2" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Lankmark" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="State" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Pincode" Type="int" Nullable="false" />
+    <Property Name="PermanentAddress_Line1" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PermanentAddress_Line2" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PermanentLankmark" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PermanentState" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PermanentCity" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PermanentPincode" Type="int" Nullable="false" />
+    <Property Name="Occupation_type" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Source_of_Income" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Gross_Annual_Income" Type="int" Nullable="false" />
+    <Property Name="Debit_Card" Type="nvarchar" MaxLength="5" />
+    <Property Name="Net_banking" Type="nvarchar" MaxLength="5" />
+    <Property Name="Account_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Approval_Status" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="UsersAccount">
+    <Key>
+      <PropertyRef Name="Account_Number" />
+    </Key>
+    <Property Name="Account_Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer_Id" Type="int" />
+    <Property Name="Customername" Type="nvarchar" MaxLength="128" />
+    <Property Name="Login_Password" Type="varchar" MaxLength="10" />
+    <Property Name="Transaction_Password" Type="varchar" MaxLength="10" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Register_Internet_Banking" Type="varchar" MaxLength="5" />
+    <Property Name="Login_Status" Type="varchar" MaxLength="10" />
+    <Property Name="Logout_Time" Type="time" Precision="7" />
+    <Property Name="Reference_Id" Type="int" />
+    <Property Name="Otp" Type="int" />
+  </EntityType>
+  <Association Name="FK__UsersAcco__Refer__7073AF84">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UsersAccount" Type="Self.UsersAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="Reference_ID" />
+      </Principal>
+      <Dependent Role="UsersAccount">
+        <PropertyRef Name="Reference_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BankingDbModelStoreContainer">
+    <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersAccount" EntityType="Self.UsersAccount" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__UsersAcco__Refer__7073AF84" Association="Self.FK__UsersAcco__Refer__7073AF84">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="UsersAccount" EntitySet="UsersAccount" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

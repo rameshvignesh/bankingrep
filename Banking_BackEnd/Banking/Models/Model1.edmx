@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BankingDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="Reference_ID" />
+          </Key>
+          <Property Name="Reference_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Middle_Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Father_Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Mobile_Number" Type="bigint" Nullable="false" />
+          <Property Name="Email_Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aadhar_Number" Type="bigint" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="date" Nullable="false" />
+          <Property Name="Address_Line1" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Address_Line2" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Lankmark" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Pincode" Type="int" Nullable="false" />
+          <Property Name="PermanentAddress_Line1" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PermanentAddress_Line2" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PermanentLankmark" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PermanentState" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PermanentCity" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PermanentPincode" Type="int" Nullable="false" />
+          <Property Name="Occupation_type" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Source_of_Income" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Gross_Annual_Income" Type="int" Nullable="false" />
+          <Property Name="Debit_Card" Type="nvarchar" MaxLength="5" />
+          <Property Name="Net_banking" Type="nvarchar" MaxLength="5" />
+          <Property Name="Account_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Approval_Status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="UsersAccount">
+          <Key>
+            <PropertyRef Name="Account_Number" />
+          </Key>
+          <Property Name="Account_Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_Id" Type="int" />
+          <Property Name="Customername" Type="nvarchar" MaxLength="128" />
+          <Property Name="Login_Password" Type="varchar" MaxLength="10" />
+          <Property Name="Transaction_Password" Type="varchar" MaxLength="10" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Register_Internet_Banking" Type="varchar" MaxLength="5" />
+          <Property Name="Login_Status" Type="varchar" MaxLength="10" />
+          <Property Name="Logout_Time" Type="time" Precision="7" />
+          <Property Name="Reference_Id" Type="int" />
+          <Property Name="Otp" Type="int" />
+        </EntityType>
+        <Association Name="FK__UsersAcco__Refer__7073AF84">
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersAccount" Type="Self.UsersAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Reference_ID" />
+            </Principal>
+            <Dependent Role="UsersAccount">
+              <PropertyRef Name="Reference_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BankingDbModelStoreContainer">
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersAccount" EntityType="Self.UsersAccount" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__UsersAcco__Refer__7073AF84" Association="Self.FK__UsersAcco__Refer__7073AF84">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="UsersAccount" EntitySet="UsersAccount" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BankingDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Reference_ID" />
+          </Key>
+          <Property Name="Reference_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Middle_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Father_Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mobile_Number" Type="Int64" Nullable="false" />
+          <Property Name="Email_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aadhar_Number" Type="Int64" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Address_Line1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address_Line2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lankmark" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pincode" Type="Int32" Nullable="false" />
+          <Property Name="PermanentAddress_Line1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PermanentAddress_Line2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PermanentLankmark" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PermanentState" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PermanentCity" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PermanentPincode" Type="Int32" Nullable="false" />
+          <Property Name="Occupation_type" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Source_of_Income" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gross_Annual_Income" Type="Int32" Nullable="false" />
+          <Property Name="Debit_Card" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Net_banking" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Account_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Approval_Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UsersAccounts" Relationship="BankingDbModel.FK__UsersAcco__Refer__7073AF84" FromRole="UserDetail" ToRole="UsersAccount" />
+        </EntityType>
+        <EntityContainer Name="BankingDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
+          <EntitySet Name="UsersAccounts" EntityType="BankingDbModel.UsersAccount" />
+          <AssociationSet Name="FK__UsersAcco__Refer__7073AF84" Association="BankingDbModel.FK__UsersAcco__Refer__7073AF84">
+            <End Role="UserDetail" EntitySet="UserDetails" />
+            <End Role="UsersAccount" EntitySet="UsersAccounts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UsersAccount">
+          <Key>
+            <PropertyRef Name="Account_Number" />
+          </Key>
+          <Property Name="Account_Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_Id" Type="Int32" />
+          <Property Name="Customername" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Login_Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Transaction_Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Register_Internet_Banking" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Login_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Logout_Time" Type="Time" Precision="7" />
+          <Property Name="Reference_Id" Type="Int32" />
+          <Property Name="Otp" Type="Int32" />
+          <NavigationProperty Name="UserDetail" Relationship="BankingDbModel.FK__UsersAcco__Refer__7073AF84" FromRole="UsersAccount" ToRole="UserDetail" />
+        </EntityType>
+        <Association Name="FK__UsersAcco__Refer__7073AF84">
+          <End Type="BankingDbModel.UserDetail" Role="UserDetail" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BankingDbModel.UsersAccount" Role="UsersAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="Reference_ID" />
+            </Principal>
+            <Dependent Role="UsersAccount">
+              <PropertyRef Name="Reference_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BankingDbModelStoreContainer" CdmEntityContainer="BankingDbEntities">
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="BankingDbModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="Reference_ID" ColumnName="Reference_ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Father_Name" ColumnName="Father_Name" />
+                <ScalarProperty Name="Mobile_Number" ColumnName="Mobile_Number" />
+                <ScalarProperty Name="Email_Id" ColumnName="Email_Id" />
+                <ScalarProperty Name="Aadhar_Number" ColumnName="Aadhar_Number" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Address_Line1" ColumnName="Address_Line1" />
+                <ScalarProperty Name="Address_Line2" ColumnName="Address_Line2" />
+                <ScalarProperty Name="Lankmark" ColumnName="Lankmark" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="PermanentAddress_Line1" ColumnName="PermanentAddress_Line1" />
+                <ScalarProperty Name="PermanentAddress_Line2" ColumnName="PermanentAddress_Line2" />
+                <ScalarProperty Name="PermanentLankmark" ColumnName="PermanentLankmark" />
+                <ScalarProperty Name="PermanentState" ColumnName="PermanentState" />
+                <ScalarProperty Name="PermanentCity" ColumnName="PermanentCity" />
+                <ScalarProperty Name="PermanentPincode" ColumnName="PermanentPincode" />
+                <ScalarProperty Name="Occupation_type" ColumnName="Occupation_type" />
+                <ScalarProperty Name="Source_of_Income" ColumnName="Source_of_Income" />
+                <ScalarProperty Name="Gross_Annual_Income" ColumnName="Gross_Annual_Income" />
+                <ScalarProperty Name="Debit_Card" ColumnName="Debit_Card" />
+                <ScalarProperty Name="Net_banking" ColumnName="Net_banking" />
+                <ScalarProperty Name="Account_type" ColumnName="Account_type" />
+                <ScalarProperty Name="Approval_Status" ColumnName="Approval_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersAccounts">
+            <EntityTypeMapping TypeName="BankingDbModel.UsersAccount">
+              <MappingFragment StoreEntitySet="UsersAccount">
+                <ScalarProperty Name="Otp" ColumnName="Otp" />
+                <ScalarProperty Name="Reference_Id" ColumnName="Reference_Id" />
+                <ScalarProperty Name="Logout_Time" ColumnName="Logout_Time" />
+                <ScalarProperty Name="Login_Status" ColumnName="Login_Status" />
+                <ScalarProperty Name="Register_Internet_Banking" ColumnName="Register_Internet_Banking" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Transaction_Password" ColumnName="Transaction_Password" />
+                <ScalarProperty Name="Login_Password" ColumnName="Login_Password" />
+                <ScalarProperty Name="Customername" ColumnName="Customername" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="Account_Number" ColumnName="Account_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
